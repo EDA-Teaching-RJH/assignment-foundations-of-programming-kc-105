@@ -13,6 +13,7 @@ def run_system_monolith():
     loading = 0
     while loading < 5:
         print("Loading module " + str(loading))
+        loading = loading + 1 #loading was infinitely looping because its value was not changing
         
     
     while True:
@@ -25,7 +26,7 @@ def run_system_monolith():
         
         opt = input("Select option: ")
         
-        if opt = "1":  
+        if opt == "1":  #use of a single = wheretwo are required
             print("Current Crew List:")
             
             for i in range(10):
@@ -88,4 +89,4 @@ def run_system_monolith():
             
         print("End of cycle.")
 
-run_system_monolith
+run_system_monolith()#brackets missing from main 
