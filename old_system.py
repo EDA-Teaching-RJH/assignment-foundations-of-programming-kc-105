@@ -29,15 +29,15 @@ def run_system_monolith():
         if opt == "1":  #use of a single = wheretwo are required
             print("Current Crew List:")
             
-            for i in range(10):
+            for i in range(10):#loops ten times when there may not be 10 crew members
                 print(n[i] + " - " + r[i]) 
                 
         elif opt == "2":
             new_name = input("Name: ")
             new_rank = input("Rank: ")
             new_div = input("Division: ")
-            
-           
+            d.append(new_div)       #the inputs for rank and division werent being added to the lists
+            r.append(new_rank)
             n.append(new_name)
             print("Crew member added.")
             
