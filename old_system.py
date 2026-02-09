@@ -54,8 +54,8 @@ def run_system_monolith():
             print("Analyzing...")
             count = 0
             
-            for rank in r:
-                if rank == "Captain" or "Commander": 
+            for rank in r: #returns 4 high ranking officers when there are only 2 addded another or rank ==
+                if rank == "Captain" or rank =="Commander": 
                     count = count + 1
             print(f"High ranking officers: {count}") # cant concatenate a string and an integer
             
