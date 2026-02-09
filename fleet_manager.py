@@ -73,12 +73,17 @@ def display_roster()
     #Prints a formatted table of all crew.
         
 def search_crew()
+    
     #Asks for a search term.
     #Prints any crew member whose name contains that term.
         
 def filter_by_division()
-    #Asks user for "Command", "Operations", or "Sciences".
-    #Prints only members in that division using `match` or `if` .
+    divisionname = input("Please enter the Division (Command, Operations, Sciences):")#Asks user for "Command", "Operations", or "Sciences"
+    print("Current members in ", divisionname)
+    for i in d:
+        if d(i) = divisionname:#Prints only members in that division using `match` or `if` .
+            print(n(i))
+    
         
 def calculate_payroll()
     #Iterates through the ranks list.
