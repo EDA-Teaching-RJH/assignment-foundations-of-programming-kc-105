@@ -40,7 +40,7 @@ def add_member()
             new_id = input("ID:")
             for _ in id:
                  if new_id not in id:
-                      id.append(newid)
+                      id.append(new_id)
                       break
             return
         print("Crew member added.")
@@ -66,6 +66,9 @@ def update_rank()
    
         
 def display_roster()
+    print ("Current Roster")
+    for i in range(len(n))
+        print("Name: ",n(i)," Rank: ",r(i)," Division: ",d(i)," ID: ", id(i))
     #Iterates through the lists using `range(len(names))`.
     #Prints a formatted table of all crew.
         
