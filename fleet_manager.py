@@ -27,6 +27,32 @@ def display_menu()#Queries users full name, Prints the options and current stude
     print("8. Payroll")
     print("9. Count Officers")
     print("0. Exit")
+        
+    opt = input("Select option: ")
+    match opt:
+        case 1:
+            display_roster
+        case 2:
+            add_member
+        case 3:
+            remove_member
+        case 4:
+            update_rank
+        case 5:
+            display_roster
+        case 6:
+            search_crew
+        case 7:
+            filter_by_division
+        case 8:
+            calculate_payroll
+        case 9:
+            count_officers
+        case 0:
+            print("Shutting down.")
+            break
+        case _:
+            print ("please enter a valid option")   
 
 def add_member()
         print ("please enter the information of the new character")
