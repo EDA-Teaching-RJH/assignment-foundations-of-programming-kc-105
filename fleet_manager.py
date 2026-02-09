@@ -2,6 +2,7 @@ n = ["Picard", "Riker", "Data", "Worf","Goofy"]
 r = ["Captain", "Commander", "Lt. Commander", "Lieutenant", "Knight"]
 d = ["Command", "Command", "Operations", "Security","Operations"]
 id = ["001","002","003","004","005"]
+currentuser = ""
 
 characters = [{n:"picard",r:"Captain",d:"Command",id:"001"} 
               {n:"Riker",r:"Commander",d:"Command",id:"002"}
@@ -16,7 +17,22 @@ def init_database() #Returns 4 lists pre-populated with at least 5 Star Trek cha
 
 
 def display_menu()#Queries users full name, Prints the options and current student logged in and returns the user's choice.
+    if currentuser == "":
+        currentuser = input("Please Enter Full Name")
     
+    print("\n--- MENU ---")
+    print("Welcome ", currentuser)
+    print("1. View Database")
+    print("2. Add Member")
+    print("3. Remove Member")
+    print("4. Update Rank")
+    print("5. Display Roster")
+    print("6. Search Crew")
+    print ("7.Search Division")
+    print("8. Payroll")
+    print("9. Count Officers")
+    print("0. Exit")
+
 def add_member(names, ranks, divs, ids)
         #Validates ID is unique.
         #Validates Rank is a valid TNG rank.
@@ -40,13 +56,13 @@ def search_crew(names, ranks, divs, ids)
     #Asks for a search term.
     #Prints any crew member whose name contains that term.
         
-filter_by_division(names, divs)
+def filter_by_division(names, divs)
     #Asks user for "Command", "Operations", or "Sciences".
     #Prints only members in that division using `match` or `if` .
         
-calculate_payroll(ranks)
+def calculate_payroll(ranks)
     #Iterates through the ranks list.
     #Assigns a credit value to ranks (e.g., Captain = 1000, Ensign = 200).
     #Returns the total cost of the crew.
         
-count_officers(ranks) #Counts how many "Captain" and "Commander" ranks exist and returns the integer.
+def count_officers(ranks) #Counts how many "Captain" and "Commander" ranks exist and returns the integer.
