@@ -29,7 +29,7 @@ def run_system_monolith():
         if opt == "1":  #use of a single = wheretwo are required
             print("Current Crew List:")
             
-            for i in range(10):#loops ten times when there may not be 10 crew members
+            for i in range(len(n)):#loops ten times when there may not be 10 crew members
                 print(n[i] + " - " + r[i]) 
                 
         elif opt == "2":
