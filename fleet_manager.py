@@ -1,6 +1,6 @@
 def init_database() #Returns 4 lists pre-populated with at least 5 Star Trek characters and their data.
     n = ["Picard", "Riker", "Data", "Worf","Goofy"]
-    r = ["Captain", "Commander", "Lt. Commander", "Lieutenant", "Knight"]
+    r = ["Captain", "Commander", "Lt. Commander", "Lieutenant", "Ensign"]
     d = ["Command", "Command", "Operations", "Security","Operations"]
     id = ["001","002","003","004","005"]
 
@@ -8,7 +8,7 @@ def init_database() #Returns 4 lists pre-populated with at least 5 Star Trek cha
                 {n:"Riker",r:"Commander",d:"Command",id:"002"}
                 {n:"Data",r:"Lt. Commander",d:"Operations",id:"003"}
                 {n:"Worf",r:"Lieutenant",d:"Security",id:"004"}
-                {n:"Goofy",r:"Knight",d:"Operations",id:"005"}]
+                {n:"Goofy",r:"Ensign",d:"Operations",id:"005"}]
 
 
 def display_menu()#Queries users full name, Prints the options and current student logged in and returns the user's choice.
@@ -31,22 +31,19 @@ def display_menu()#Queries users full name, Prints the options and current stude
 def add_member()
         print ("please enter the information of the new character")
         new_name = input("Name: ")
-        n.append(new_name)
+        n.append(new_name)#Appends data to all 4 lists.
         new_rank = input("Rank: ")
-        r.append(new_rank)
+        r.append(new_rank)#Validates Rank is a valid TNG rank.
         new_div = input("Division: ")
         d.append(new_div)
         while true:
-            new_id = input("ID:")
+            new_id = input("ID:")#Validates ID is unique.
             for _ in id:
                  if new_id not in id:
                       id.append(new_id)
                       break
             return
-        print("Crew member added.")
-        #Validates ID is unique.
-        #Validates Rank is a valid TNG rank.
-        #Appends data to all 4 lists.
+        print("Crew member added.")   
         
 def remove_member()
     removalid = input("Please enter ID of Character to be removed :")#Asks for an ID.
@@ -67,10 +64,10 @@ def update_rank()
         
 def display_roster()
     print ("Current Roster")
-    for i in range(len(n))
-        print("Name: ",n(i)," Rank: ",r(i)," Division: ",d(i)," ID: ", id(i))
-    #Iterates through the lists using `range(len(names))`.
-    #Prints a formatted table of all crew.
+    for i in range(len(n))#Iterates through the lists using `range(len(names))
+        print("Name: ",n(i)," Rank: ",r(i)," Division: ",d(i)," ID: ", id(i))#Prints a formatted table of all crew.
+    
+    
         
 def search_crew()
     
@@ -86,8 +83,25 @@ def filter_by_division()
     
         
 def calculate_payroll()
-    #Iterates through the ranks list.
-    #Assigns a credit value to ranks (e.g., Captain = 1000, Ensign = 200).
-    #Returns the total cost of the crew.
+    print ("current payroll: ")
+    payroll = 0
+    for i in r:#Iterates through the ranks list.
+        match r: #Assigns a credit value to ranks (e.g., Captain = 1000, Ensign = 200).
+            case "Captain":
+                payroll = payroll+ 1000
+            case "Commander":
+                payroll = payroll+ 750
+            case "Lt. Comancer":
+                payroll = payroll+ 500
+            case "Lietenant":
+                payroll = payroll+ 400
+            case "Ensign":
+                payroll = payroll+ 200
+    print (payroll)#Returns the total cost of the crew.
         
-def count_officers() #Counts how many "Captain" and "Commander" ranks exist and returns the integer.
+def count_officers()
+    count = 0
+    for rank in r: 
+        if rank == "Captain" or rank =="Commander": 
+            count = count + 1
+            print(f"There are {count} High ranking officers") #Counts how many "Captain" and "Commander" ranks exist and returns the integer.
