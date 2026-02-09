@@ -70,10 +70,16 @@ def display_roster()
     
         
 def search_crew()
-    
-    #Asks for a search term.
-    #Prints any crew member whose name contains that term.
-        
+    count = 0
+    while count > 0:
+        searchterm = input("Please enter a search term :")#Asks for a search term.
+        for i in range(len(n)):
+            if searchterm in n(i):
+            print("Name: ",n(i)," Rank: ",r(i)," Division: ",d(i)," ID: ", id(i))#Prints any crew member whose name contains that term
+            count = count + 1
+        if count = 0:
+            print("No names with term: ", searchterm)
+
 def filter_by_division()
     divisionname = input("Please enter the Division (Command, Operations, Sciences):")#Asks user for "Command", "Operations", or "Sciences"
     print("Current members in ", divisionname)
