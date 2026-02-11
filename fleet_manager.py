@@ -110,7 +110,7 @@ def display_roster():
             
 def search_crew():
     count = 0
-    while count > 0:
+    while True:
         searchterm = input("Please enter a search term :")#Asks for a search term.
         for i in range(len(n)):
             if searchterm in n[i]:
@@ -118,14 +118,27 @@ def search_crew():
                 count = count + 1
         if count == 0:
             print("No names with term: ", searchterm)
+            break
+        else:
+            break
 
 def filter_by_division():
-    divisionname = input("Please enter the Division (Command, Operations, Sciences):")#Asks user for "Command", "Operations", or "Sciences"
-    print("Current members in ", divisionname)
-    for i in d:
-        if d(i) == divisionname:#Prints only members in that division using `match` or `if` .
-            print(n[i])
-    
+    count = 0
+    while True:
+        division_name = input("Please enter the Division (Command, Operations, Sciences):")#Asks user for "Command", "Operations", or "Sciences"
+        if division_name == "Command" or division_name == "Operations" or division_name == "Sciences":
+            print("Current members in ", division_name)
+            for i in range(len(d)):
+                if d[i] == division_name:#Prints only members in that division using `match` or `if` .
+                    print(n[i])
+                    count += 1 
+            if count == 0:
+                print("no members in ", division_name)
+                break
+            break
+        else:
+            print("Division name not valid")   
+            break
         
 def calculate_payroll():
     print ("current payroll: ")
