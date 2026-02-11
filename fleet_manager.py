@@ -68,21 +68,19 @@ def add_member():
     r.append(new_rank)#Validates Rank is a valid TNG rank.
     new_div = input("Division: ")
     d.append(new_div)
-    while True:
+    for _ in idn:
         new_id = input("ID:")#Validates ID is unique.
-        for _ in idn:
-            if new_id not in idn:
-                idn.append(new_id)
-                print("Crew member added.")
-                break
-            else:  
-                print("Please enter valid id")
+        if new_id not in idn:
+            idn.append(new_id)
+            print("Crew member added.")
+            break
+        else:  
+            print("Please enter valid id")
        
         
 def remove_member():
     removalid = input("Please enter ID of Character to be removed :")#Asks for an ID.
-    xid = n.index(removalid)#Finds the index.
-
+    xid = idn.index(removalid)#Finds the index.
     n.pop(xid)
     r.pop(xid)
     d.pop(xid)
