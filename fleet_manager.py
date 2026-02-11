@@ -1,22 +1,26 @@
 def init_database():
-    n = ["Picard", "Riker", "Data", "Worf","Goofy"]#Returns 4 lists pre-populated with at least 5 Star Trek characters and their data.
-    r = ["Captain", "Commander", "Lt. Commander", "Lieutenant", "Ensign"]
-    d = ["Command", "Command", "Operations", "Security","Operations"]
-    idn = ["001","002","003","004","005"]
+    global n,r,d,idn
 
-    characters = dict(zip(n,r,d,idn))
-               # [{n:"picard",r:"Captain",d:"Command",id:"001"} 
-               # {n:"Riker",r:"Commander",d:"Command",id:"002"}
-                #{n:"Data",r:"Lt. Commander",d:"Operations",id:"003"}
-                #{n:"Worf",r:"Lieutenant",d:"Security",id:"004"}
-               # {n:"Goofy",r:"Ensign",d:"Operations",id:"005"}]
+    n = ["Picard", "Riker", "Data", "Worf","Goofy"]#Returns 4 lists pre-populated with at least 5 Star Trek characters and their data.
+    r = ["Captain", "Commander", "Lt. Commander", "Lieutenant", "Ensign"]#rank
+    d = ["Command", "Command", "Operations", "Security","Operations"]#division
+    idn = ["001","002","003","004","005"]#idnumber
+    return [n,r,d,idn]
+    #characters = dict(zip(n,r,d,idn))
+               # [character(n="picard",r="Captain",d="Command",id="001")
+               # character(n="Riker",r="Commander",d="Command",id="002")
+                #character(n="Data",r="Lt. Commander",d="Operations",id="003")
+                #character(n="Worf",r="Lieutenant",d="Security",id="004")
+               # character(n="Goofy",r="Ensign",d="Operations",id="005")]
 
 
 def display_menu():#Queries users full name, Prints the options and current student logged in and returns the user's choice.
-    while true:
-        if currentuser == "":
+    init_database()
+    count = 0
+    while True:
+        if count == 0: 
             currentuser = input("Please Enter Full Name")
-        
+        count = count + 1
         print("\n--- MENU ---")
         print("Welcome ", currentuser)
         print("1. View Database")
@@ -32,46 +36,48 @@ def display_menu():#Queries users full name, Prints the options and current stud
             
         opt = input("Select option: ")
         match opt:
-            case 1:
-                display_roster
-            case 2:
-                add_member
-            case 3:
-                remove_member
-            case 4:
-                update_rank
-            case 5:
-                display_roster
-            case 6:
-                search_crew
-            case 7:
-                filter_by_division
-            case 8:
-                calculate_payroll
-            case 9:
-                count_officers
-            case 0:
+            case "1":
+                display_roster()
+            case "2":
+                add_member()
+            case "3":
+                remove_member()
+            case "4":
+                update_rank()
+            case "5":
+                display_roster()
+            case "6":
+                search_crew()
+            case "7":
+                filter_by_division()
+            case "8":
+                calculate_payroll()
+            case "9":
+                count_officers()
+            case "0":
                 print("Shutting down.")
                 break
             case _:
                 print ("please enter a valid option")   
 
 def add_member():
-        print ("please enter the information of the new character")
-        new_name = input("Name: ")
-        n.append(new_name)#Appends data to all 4 lists.
-        new_rank = input("Rank: ")
-        r.append(new_rank)#Validates Rank is a valid TNG rank.
-        new_div = input("Division: ")
-        d.append(new_div)
-        while true:
-            new_id = input("ID:")#Validates ID is unique.
-            for _ in idn:
-                 if new_id not in idn:
-                      idn.append(new_id)
-                      break
-            return
-        print("Crew member added.")   
+    print ("please enter the information of the new character")
+    new_name = input("Name: ")
+    n.append(new_name)#Appends data to all 4 lists.
+    new_rank = input("Rank: ")
+    r.append(new_rank)#Validates Rank is a valid TNG rank.
+    new_div = input("Division: ")
+    d.append(new_div)
+    while True:
+        new_id = input("ID:")#Validates ID is unique.
+        for _ in idn:
+            if new_id not in idn:
+                idn.append(new_id)
+                print("Crew member added.")
+                break
+            else:  
+                print("Please enter valid id")
+       
         
 def remove_member():
     removalid = input("Please enter ID of Character to be removed :")#Asks for an ID.
@@ -96,7 +102,7 @@ def update_rank():
 def display_roster():
     print ("Current Roster")
     for i in range(len(n)):#Iterates through the lists using `range(len(names))
-        print("Name: ",n(i)," Rank: ",r(i)," Division: ",d(i)," ID: ", idn(i))#Prints a formatted table of all crew.
+        print("Name: ",n[i]," Rank: ",r[i]," Division: ",d[i]," ID: ", idn[i])#Prints a formatted table of all crew.
     
     
         
@@ -106,7 +112,7 @@ def search_crew():
         searchterm = input("Please enter a search term :")#Asks for a search term.
         for i in range(len(n)):
             if searchterm in n(i):
-                print("Name: ",n(i)," Rank: ",r(i)," Division: ",d(i)," ID: ", idn(i))#Prints any crew member whose name contains that term
+                print("Name: ",n[i]," Rank: ",r[i]," Division: ",d[i]," ID: ", idn[i])#Prints any crew member whose name contains that term
                 count = count + 1
         if count == 0:
             print("No names with term: ", searchterm)
@@ -116,7 +122,7 @@ def filter_by_division():
     print("Current members in ", divisionname)
     for i in d:
         if d(i) == divisionname:#Prints only members in that division using `match` or `if` .
-            print(n(i))
+            print(n[i])
     
         
 def calculate_payroll():
@@ -143,5 +149,5 @@ def count_officers():
             count = count + 1
             print(f"There are {count} High ranking officers") #Counts how many "Captain" and "Commander" ranks exist and returns the inte
 
-init_database()
+
 display_menu()
