@@ -13,7 +13,6 @@ def init_database():
                 #character(n="Worf",r="Lieutenant",d="Security",id="004")
                # character(n="Goofy",r="Ensign",d="Operations",id="005")]
 
-
 def display_menu():#Queries users full name, Prints the options and current student logged in and returns the user's choice.
     init_database()
     count = 0
@@ -68,7 +67,7 @@ def add_member():
     r.append(new_rank)#Validates Rank is a valid TNG rank.
     new_div = input("Division: ")
     d.append(new_div)
-    for _ in idn:
+    for _ in idn:#for loop for validation
         new_id = input("ID:")#Validates ID is unique.
         if new_id not in idn:
             idn.append(new_id)
@@ -76,40 +75,45 @@ def add_member():
             break
         else:  
             print("Please enter valid id")
-       
-        
+               
 def remove_member():
-    removalid = input("Please enter ID of Character to be removed :")#Asks for an ID.
-    xid = idn.index(removalid)#Finds the index.
-    n.pop(xid)
-    r.pop(xid)
-    d.pop(xid)
-    idn.pop(xid)#Removes the entry from _all 4 lists_ to keep them in sync.
-    print("Removed.")
-        
+    for _ in idn:#for loop for validation
+        removal_id = input("Please enter ID of Character to be removed :")#Asks for an ID.
+        if removal_id in idn:
+            xid = idn.index(removal_id)#Finds the index.
+            n.pop(xid)
+            r.pop(xid)
+            d.pop(xid)
+            idn.pop(xid)#Removes the entry from _all 4 lists_ to keep them in sync.
+            print("Removed.")
+            break
+        else:  
+            print("Please enter valid id")
+     
 def update_rank():
-    update = input("Please enter ID of Character to be Updated :")
-    newrank = str(input("PLease enter a new Rank "))
-    #Finds a member by ID.
-    for i in range(idn):
-        if idn(i) == update:
-            r[i] = newrank #Updates their rank string.
-    
-   
+    while True:
+        update = input("Please enter ID of Character to be Updated :")
+        if update in idn:
+            newrank = str(input("PLease enter a new Rank "))
+            for i in range(len(idn)):#Finds a member by ID.
+                if idn[i] == update:
+                    r[i] = newrank #Updates their rank string.
+                    print ("rank updated")
+            break
+        else:
+            print("Please enter valid id")
         
 def display_roster():
     print ("Current Roster")
     for i in range(len(n)):#Iterates through the lists using `range(len(names))
         print("Name: ",n[i]," Rank: ",r[i]," Division: ",d[i]," ID: ", idn[i])#Prints a formatted table of all crew.
-    
-    
-        
+            
 def search_crew():
     count = 0
     while count > 0:
         searchterm = input("Please enter a search term :")#Asks for a search term.
         for i in range(len(n)):
-            if searchterm in n(i):
+            if searchterm in n[i]:
                 print("Name: ",n[i]," Rank: ",r[i]," Division: ",d[i]," ID: ", idn[i])#Prints any crew member whose name contains that term
                 count = count + 1
         if count == 0:
