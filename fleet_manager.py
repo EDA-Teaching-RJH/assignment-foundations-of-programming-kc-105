@@ -143,15 +143,15 @@ def filter_by_division():
 def calculate_payroll():
     print ("current payroll: ")
     payroll = 0
-    for i in r:#Iterates through the ranks list.
-        match r: #Assigns a credit value to ranks (e.g., Captain = 1000, Ensign = 200).
+    for i in range(len(r)):#Iterates through the ranks list.
+        match r[i]: #Assigns a credit value to ranks (e.g., Captain = 1000, Ensign = 200).
             case "Captain":
                 payroll = payroll+ 1000
             case "Commander":
                 payroll = payroll+ 750
-            case "Lt. Comancer":
+            case "Lt. Commander":
                 payroll = payroll+ 500
-            case "Lietenant":
+            case "Lieutenant":
                 payroll = payroll+ 400
             case "Ensign":
                 payroll = payroll+ 200
@@ -162,7 +162,7 @@ def count_officers():
     for rank in r: 
         if rank == "Captain" or rank =="Commander": 
             count = count + 1
-            print(f"There are {count} High ranking officers") #Counts how many "Captain" and "Commander" ranks exist and returns the inte
+    print(f"There are {count} High ranking officers") #Counts how many "Captain" and "Commander" ranks exist and returns the inte
 
 
 display_menu()
