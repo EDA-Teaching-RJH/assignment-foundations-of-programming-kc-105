@@ -165,4 +165,4 @@ def count_officers():
     print(f"There are {count} High ranking officers") #Counts how many "Captain" and "Commander" ranks exist and returns the inte
 
 
-display_menu()
+display_menu()#brackets missing
